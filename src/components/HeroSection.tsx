@@ -3,7 +3,7 @@ import React from 'react';
 export const HeroSection: React.FC = () => {
   return (
     <header className="w-full max-md:max-w-full">
-      <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
+      <div className="gap-5 flex max-md:flex-col max-md:items-stretch px-[120px] max-md:px-5">
         <div className="w-[43%] max-md:w-full max-md:ml-0">
           <div className="z-10 flex mr-[-153px] flex-col items-stretch font-normal max-md:max-w-full">
             <div className="border-neutral-200 border z-10 flex shrink-0 h-[460px] rounded-[0px_0px_45px_0px] border-solid max-md:max-w-full" />

@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="self-center flex w-full max-w-[1200px] flex-col items-stretch mt-[61px] max-md:max-w-full max-md:mt-10">
+    <footer className="self-center flex w-full max-w-[1200px] flex-col items-stretch mt-[61px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
       <div className="flex w-full items-center justify-between max-md:max-w-full">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/25f45d5e31b44bdd9067a3d1419748f2/fcb43816f745ff4295fe209acbb55debd996aea1?placeholderIfAbsent=true"

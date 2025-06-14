@@ -2,7 +2,7 @@ import React from 'react';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="flex w-full max-w-[1334px] gap-5 justify-between mt-[54px] max-md:max-w-full max-md:mt-10">
+    <section id="about" className="flex w-full max-w-[1334px] gap-5 justify-between mt-[54px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
       <div className="bg-[rgba(0,170,170,1)] flex w-[47px] shrink-0 h-[829px] rounded-[0px_150px_150px_0px] max-md:hidden" />
       <div className="font-normal mt-[26px] max-md:max-w-full">
         <article className="flex max-w-full w-[793px] flex-col items-stretch pr-[72px] pb-3 rounded-[0px_0px_0px_0px] max-md:pr-5">

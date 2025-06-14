@@ -91,7 +91,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="bg-[rgba(246,246,246,1)] flex w-full items-center gap-[31px] flex-wrap mt-[169px] pr-20 py-[74px] max-md:max-w-full max-md:mt-10 max-md:pr-5">
+    <section id="contact" className="bg-[rgba(246,246,246,1)] flex w-full items-center gap-[31px] flex-wrap mt-[169px] pr-20 py-[74px] max-md:max-w-full max-md:mt-10 max-md:pr-5 px-[120px] max-md:px-5">
       <div className="border self-stretch flex w-32 shrink-0 h-[796px] my-auto rounded-[250px_0px_0px_250px] border-[rgba(195,195,195,1)] border-solid" />
       <aside className="self-stretch my-auto max-md:hidden">
         <img

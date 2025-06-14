@@ -53,7 +53,7 @@ export const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="self-center flex w-full max-w-[1224px] flex-col items-stretch ml-3 mt-[154px] max-md:max-w-full max-md:mt-10">
+    <section id="services" className="self-center flex w-full max-w-[1224px] flex-col items-stretch ml-3 mt-[154px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
       <h2 className="text-black text-[52px] font-normal leading-none tracking-[-1.5px] ml-2.5 max-md:text-[40px]">
         Palvelumme
       </h2>

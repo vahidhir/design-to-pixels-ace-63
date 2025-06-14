@@ -9,7 +9,7 @@ export const ProjectSection: React.FC = () => {
   };
 
   return (
-    <section id="project" className="w-full max-w-[1320px] mt-[113px] max-md:max-w-full max-md:mt-10">
+    <section id="project" className="w-full max-w-[1320px] mt-[113px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
         <div className="w-[45%] max-md:w-full max-md:ml-0">
           <article className="flex flex-col font-normal max-md:max-w-full max-md:mt-10">
