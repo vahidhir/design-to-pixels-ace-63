@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export const HeroSection: React.FC = () => {
@@ -48,8 +47,8 @@ export const HeroSection: React.FC = () => {
             </nav>
             <div className="flex flex-col relative min-h-[517px] w-[714px] max-w-full mt-[7px] pt-[386px] rounded-[0px_0px_35px_0px] max-md:pt-[100px]">
               <img
-                src="/lovable-uploads/b8e402e4-07ee-4cf2-a43c-cda750060c05.png"
-                alt="Modern house construction"
+                src="https://cdn.builder.io/api/v1/image/assets/25f45d5e31b44bdd9067a3d1419748f2/4ac91c378795973bad1afcd345bd043d0ae3a4b1?placeholderIfAbsent=true"
+                alt="Construction site"
                 className="absolute h-full w-full object-cover inset-0"
               />
               <div className="relative flex flex-col items-center pt-[22px] pb-[39px] px-20 rounded-[35px_0px_0px_0px] max-md:max-w-full max-md:px-5">
