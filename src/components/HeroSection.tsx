@@ -27,44 +27,48 @@ export const HeroSection: React.FC = () => {
         </div>
         <div className="w-[57%] ml-5 max-md:w-full max-md:ml-0">
           <div className="border flex w-full flex-col pt-8 pb-[17px] rounded-[0px_0px_0px_40px] border-[rgba(203,203,203,1)] border-solid max-md:max-w-full">
-            <nav className="flex items-stretch gap-[37px] text-lg font-normal whitespace-nowrap flex-wrap max-md:max-w-full">
-              <div className="flex flex-col items-stretch text-black grow shrink-0 basis-0 w-fit pb-6 max-md:max-w-full">
-                <div className="z-10 flex items-center justify-between">
-                  <div className="self-stretch flex min-w-60 h-3.5 w-[443px] items-center gap-[40px_65px] justify-between my-auto">
-                    <a href="#about" className="self-stretch my-auto hover:text-gray-600 transition-colors">
-                      meistä
-                    </a>
-                    <a href="#services" className="self-stretch my-auto hover:text-gray-600 transition-colors">
-                      palvelua
-                    </a>
-                    <a href="#project" className="self-stretch my-auto hover:text-gray-600 transition-colors">
-                      hanke
-                    </a>
-                    <a href="#contact" className="self-stretch my-auto hover:text-gray-600 transition-colors">
-                      yhteyttä
-                    </a>
-                  </div>
-                </div>
-                <div className="bg-black self-center flex mt-[-26px] w-[52px] shrink-0 h-0.5 ml-[183px] rounded-[1px]" />
+            <nav className="flex items-center justify-between text-lg font-normal whitespace-nowrap flex-wrap max-md:max-w-full px-6">
+              {/* Logo on the left */}
+              <div className="text-black text-xl font-bold">
+                ROYS REMONTTI
               </div>
-              <div className="flex items-center gap-2 text-white mt-2.5">
-                <button
-                  onClick={toggleLanguage}
-                  className={`px-2 py-1 rounded transition-colors ${
-                    language === 'FI' ? 'bg-black text-white' : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  FI
-                </button>
-                <span className="text-gray-400">|</span>
-                <button
-                  onClick={toggleLanguage}
-                  className={`px-2 py-1 rounded transition-colors ${
-                    language === 'EN' ? 'bg-black text-white' : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  EN
-                </button>
+              
+              {/* Navigation and language toggle on the right */}
+              <div className="flex items-center gap-8">
+                <div className="flex items-center gap-8 text-black">
+                  <a href="#about" className="hover:text-gray-600 transition-colors">
+                    meistä
+                  </a>
+                  <a href="#services" className="hover:text-gray-600 transition-colors">
+                    palvelua
+                  </a>
+                  <a href="#project" className="hover:text-gray-600 transition-colors">
+                    hanke
+                  </a>
+                  <a href="#contact" className="hover:text-gray-600 transition-colors">
+                    yhteyttä
+                  </a>
+                </div>
+                
+                <div className="flex items-center gap-2 text-white">
+                  <button
+                    onClick={toggleLanguage}
+                    className={`px-2 py-1 rounded transition-colors ${
+                      language === 'FI' ? 'bg-black text-white' : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    FI
+                  </button>
+                  <span className="text-gray-400">|</span>
+                  <button
+                    onClick={toggleLanguage}
+                    className={`px-2 py-1 rounded transition-colors ${
+                      language === 'EN' ? 'bg-black text-white' : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    EN
+                  </button>
+                </div>
               </div>
             </nav>
             <div className="flex flex-col relative min-h-[517px] w-[714px] max-w-full mt-[7px] pt-[386px] rounded-[0px_0px_35px_0px] max-md:pt-[100px]">
