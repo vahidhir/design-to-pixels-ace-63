@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const HeroSection: React.FC = () => {
+  const [language, setLanguage] = useState<'FI' | 'EN'>('FI');
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'FI' ? 'EN' : 'FI');
+  };
+
   return (
     <header className="w-full max-md:max-w-full">
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch px-[120px] max-md:px-5">
@@ -41,8 +47,24 @@ export const HeroSection: React.FC = () => {
                 </div>
                 <div className="bg-black self-center flex mt-[-26px] w-[52px] shrink-0 h-0.5 ml-[183px] rounded-[1px]" />
               </div>
-              <div className="text-white mt-2.5">
-                FI
+              <div className="flex items-center gap-2 text-white mt-2.5">
+                <button
+                  onClick={toggleLanguage}
+                  className={`px-2 py-1 rounded transition-colors ${
+                    language === 'FI' ? 'bg-black text-white' : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  FI
+                </button>
+                <span className="text-gray-400">|</span>
+                <button
+                  onClick={toggleLanguage}
+                  className={`px-2 py-1 rounded transition-colors ${
+                    language === 'EN' ? 'bg-black text-white' : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  EN
+                </button>
               </div>
             </nav>
             <div className="flex flex-col relative min-h-[517px] w-[714px] max-w-full mt-[7px] pt-[386px] rounded-[0px_0px_35px_0px] max-md:pt-[100px]">
