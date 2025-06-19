@@ -1,100 +1,11 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../utils/translations';
-
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  message?: string;
-}
 
 export const ContactSection: React.FC = () => {
   const { language } = useLanguage();
   const t = translations[language];
-  
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
-
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = t.contact.form.validation.nameRequired;
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = t.contact.form.validation.emailRequired;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = t.contact.form.validation.emailInvalid;
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = t.contact.form.validation.messageRequired;
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: undefined
-      }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitMessage('');
-
-    try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      setSubmitMessage(t.contact.form.successMessage);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-    } catch (error) {
-      setSubmitMessage(t.contact.form.errorMessage);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <section id="contact" className="bg-[rgba(246,246,246,1)] flex w-full items-center gap-[31px] flex-wrap mt-[169px] pr-20 py-[74px] max-md:max-w-full max-md:mt-10 max-md:pr-5 px-[120px] max-md:px-5">
@@ -144,109 +55,14 @@ export const ContactSection: React.FC = () => {
         <p className="text-[#5D5D5D] text-center text-2xl leading-8 tracking-[1px] mt-[15px] max-md:max-w-full">
           {t.contact.subtitle}
         </p>
-        <form onSubmit={handleSubmit} className="flex w-[530px] max-w-full flex-col items-stretch text-3xl mt-[52px] max-md:mt-10">
-          <div className="mb-5">
-            <label htmlFor="name" className="font-semibold leading-none tracking-[1px] ml-8 max-md:ml-2.5 block">
-              {t.contact.form.name}
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder={t.contact.form.namePlaceholder}
-              className={`bg-white border text-base mt-2 px-[30px] py-[26px] rounded-[40px] border-solid max-md:max-w-full max-md:px-5 w-full ${
-                errors.name ? 'border-red-500' : 'border-[rgba(159,159,159,1)]'
-              } focus:outline-none focus:border-[rgba(18,3,92,1)] transition-colors`}
-              aria-describedby={errors.name ? 'name-error' : undefined}
-            />
-            {errors.name && (
-              <p id="name-error" className="text-red-500 text-sm mt-1 ml-8 max-md:ml-2.5">
-                {errors.name}
-              </p>
-            )}
-          </div>
-
-          <div className="mb-5">
-            <label htmlFor="email" className="font-semibold leading-none tracking-[1px] ml-8 max-md:ml-2.5 block">
-              {t.contact.form.email}
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder={t.contact.form.emailPlaceholder}
-              className={`bg-white border text-base mt-2 px-[30px] py-[26px] rounded-[40px] border-solid max-md:max-w-full max-md:px-5 w-full ${
-                errors.email ? 'border-red-500' : 'border-[rgba(159,159,159,1)]'
-              } focus:outline-none focus:border-[rgba(18,3,92,1)] transition-colors`}
-              aria-describedby={errors.email ? 'email-error' : undefined}
-            />
-            {errors.email && (
-              <p id="email-error" className="text-red-500 text-sm mt-1 ml-8 max-md:ml-2.5">
-                {errors.email}
-              </p>
-            )}
-          </div>
-
-          <div className="mb-5">
-            <label htmlFor="subject" className="font-semibold leading-none tracking-[1px] ml-9 max-md:ml-2.5 block">
-              {t.contact.form.subject}
-            </label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleInputChange}
-              placeholder={t.contact.form.subjectPlaceholder}
-              className="bg-white border text-base border-[rgba(159,159,159,1)] mt-2 px-[30px] py-[26px] rounded-[40px] border-solid max-md:max-w-full max-md:px-5 w-full focus:outline-none focus:border-[rgba(18,3,92,1)] transition-colors"
-            />
-          </div>
-
-          <div className="mb-5">
-            <label htmlFor="message" className="font-semibold leading-none tracking-[1px] ml-[30px] max-md:ml-2.5 block">
-              {t.contact.form.message}
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              placeholder={t.contact.form.messagePlaceholder}
-              rows={4}
-              className={`bg-white border text-base mt-2 pt-[26px] pb-[26px] px-[30px] rounded-[40px] border-solid max-md:max-w-full max-md:mr-[3px] max-md:px-5 w-full resize-none ${
-                errors.message ? 'border-red-500' : 'border-[rgba(159,159,159,1)]'
-              } focus:outline-none focus:border-[rgba(18,3,92,1)] transition-colors`}
-              aria-describedby={errors.message ? 'message-error' : undefined}
-            />
-            {errors.message && (
-              <p id="message-error" className="text-red-500 text-sm mt-1 ml-[30px] max-md:ml-2.5">
-                {errors.message}
-              </p>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-[rgba(18,3,92,1)] flex items-center overflow-hidden text-[22px] text-white whitespace-nowrap leading-none justify-center mt-[22px] px-10 py-4 rounded-[41px] max-md:mr-[3px] max-md:px-5 hover:bg-[rgba(18,3,92,0.9)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        <div className="text-center mt-[52px] max-md:mt-10">
+          <a 
+            href="mailto:info@roysremontti.com" 
+            className="text-[28px] text-[rgba(18,3,92,1)] font-semibold hover:underline transition-colors"
           >
-            <div className="self-stretch flex w-[67px] flex-col items-stretch justify-center my-auto">
-              <div className="text-white w-full">
-                {isSubmitting ? t.contact.form.sending : t.contact.form.send}
-              </div>
-            </div>
-          </button>
-
-          {submitMessage && (
-            <p className={`text-center mt-4 ${submitMessage.includes(language === 'FI' ? 'Kiitos' : 'Thank you') ? 'text-green-600' : 'text-red-600'}`}>
-              {submitMessage}
-            </p>
-          )}
-        </form>
+            info@roysremontti.com
+          </a>
+        </div>
       </div>
     </section>
   );
