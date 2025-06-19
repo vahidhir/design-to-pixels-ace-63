@@ -1,40 +1,40 @@
+
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../utils/translations';
 
 export const AboutSection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="about" className="flex w-full max-w-[1334px] gap-5 justify-between mt-[54px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
       <div className="bg-[rgba(0,170,170,1)] flex w-[47px] shrink-0 h-[829px] rounded-[0px_150px_150px_0px] max-md:hidden" />
       <div className="font-normal mt-[26px] max-md:max-w-full">
         <article className="flex max-w-full w-[793px] flex-col items-stretch pr-[72px] pb-3 rounded-[0px_0px_0px_0px] max-md:pr-5">
           <h2 className="text-black text-[52px] leading-none tracking-[-1.5px] max-md:text-[40px]">
-            Tietoa meistä
+            {t.about.title}
           </h2>
           <p className="text-[#5D5D5D] text-[28px] leading-10 tracking-[0.56px] max-md:max-w-full">
-            Tarjoamme laadukkaita ja monipuolisia rakennus- sekä
-            remontointipalveluita yli 17 vuoden kokemuksella. <br />
+            {t.about.description}
           </p>
         </article>
         <article className="flex max-w-full w-[796px] flex-col items-stretch mt-[30px] pr-11 pb-3 rounded-[0px_0px_0px_0px] max-md:pr-5">
           <h2 className="text-black text-[52px] leading-none tracking-[-1.5px] max-md:text-[40px]">
-            Palvelut
+            {t.about.servicesTitle}
           </h2>
           <p className="text-[#5D5D5D] text-[28px] leading-10 tracking-[0.56px] max-md:max-w-full">
-            Palveluihimme kuuluvat kodin remontit, kylpyhuoneremontit,
-            uudisrakentaminen sekä maksuton konsultointi- ja
-            kustannusarviopalvelu. Toteutamme työt sisätiloissa lattiasta
-            kattoon ja ulkona perustuksista vesikattoon. Käytämme tarvittaessa
-            luotettavia aliurakoitsijoita varmistaaksemme sujuvan toteutuksen
-            ja aikatauluissa pysymisen.
+            {t.about.servicesDescription}
           </p>
         </article>
         <article className="flex max-w-full w-[793px] flex-col mt-[30px] pr-20 pb-2 rounded-[0px_0px_0px_0px] max-md:pr-5">
           <h2 className="text-black text-[52px] leading-none tracking-[-1.5px] max-md:text-[40px]">
-            Vahvuutemme
+            {t.about.strengthsTitle}
           </h2>
           <div className="text-[#5D5D5D] text-[28px] leading-10 tracking-[0.56px] max-md:max-w-full">
-            ✔ Laadukas ja huolellinen työnjälki
-            <br />✔ Aikatauluissa pysyminen
-            <br />✔ Ystävällinen ja asiakaslähtöinen palvelu
+            {t.about.strengths.map((strength, index) => (
+              <div key={index}>✔ {strength}</div>
+            ))}
           </div>
         </article>
       </div>
@@ -57,9 +57,7 @@ export const AboutSection: React.FC = () => {
               +100
             </div>
             <div className="text-[#5D5D5D] text-2xl leading-8 tracking-[1px]">
-              Projektit
-              <br />
-              valmistuneet
+              {t.about.stats.projects}
             </div>
           </div>
           <div className="self-center w-[103px] max-w-full mt-[17px]">
@@ -67,9 +65,7 @@ export const AboutSection: React.FC = () => {
               17
             </div>
             <div className="text-[#5D5D5D] text-2xl leading-8 tracking-[1px]">
-              Vuosien
-              <br />
-              kokemus
+              {t.about.stats.experience}
             </div>
           </div>
         </div>
@@ -84,7 +80,7 @@ export const AboutSection: React.FC = () => {
         >
           <div className="self-stretch flex w-[121px] flex-col items-stretch justify-center my-auto">
             <div className="text-white w-full">
-              Ota yhteyttä
+              {t.about.contactButton}
             </div>
           </div>
         </a>

@@ -1,12 +1,11 @@
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../utils/translations';
 
 export const Footer: React.FC = () => {
-  const [language, setLanguage] = useState<'FI' | 'EN'>('FI');
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'FI' ? 'EN' : 'FI');
-  };
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
 
   return (
     <footer className="self-center flex w-full max-w-[1200px] flex-col items-stretch mt-[61px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
@@ -39,7 +38,7 @@ export const Footer: React.FC = () => {
       <div className="flex w-full flex-col items-stretch text-base text-black font-normal mt-[61px] pb-1.5 rounded-[0px_0px_0px_0px] max-md:mt-10">
         <hr className="border z-10 shrink-0 h-px border-[rgba(217,217,217,1)] border-solid max-md:max-w-full" />
         <p className="mt-8">
-          2025 Roys Remontti. Kaikki oikeudet pidätetään
+          {t.footer.copyright}
         </p>
       </div>
     </footer>

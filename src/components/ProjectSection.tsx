@@ -1,8 +1,13 @@
+
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../utils/translations';
 
 export const ProjectSection: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 7;
+  const { language } = useLanguage();
+  const t = translations[language];
 
   const handleStepClick = (step: number) => {
     setCurrentStep(step);
@@ -14,16 +19,14 @@ export const ProjectSection: React.FC = () => {
         <div className="w-[45%] max-md:w-full max-md:ml-0">
           <article className="flex flex-col font-normal max-md:max-w-full max-md:mt-10">
             <div className="border w-[411px] max-w-full text-[52px] text-black tracking-[-1.5px] leading-none pt-[88px] pb-4 px-[70px] rounded-[200px] border-[rgba(195,195,195,1)] border-solid max-md:text-[40px] max-md:pr-[-13px] max-md:pl-5">
-              Meidän hanke
+              {t.project.title}
             </div>
             <div className="flex w-[454px] max-w-full flex-col text-[22px] tracking-[0.44px] mt-[42px] max-md:mt-10">
               <h3 className="text-black text-3xl font-semibold leading-none tracking-[1px]">
-                Keittiön remonttiprojekti
+                {t.project.projectTitle}
               </h3>
               <p className="text-[#5D5D5D] leading-[30px] self-stretch mt-[26px] max-md:max-w-full">
-                Keittiöremontti etenee suunnittelusta ja materiaalivalinnasta
-                purkuun, asennukseen ja viimeistelyyn – lopputuloksena toimiva
-                ja tyylikäs keittiö!
+                {t.project.description}
               </p>
               <nav className="flex w-[300px] max-w-full items-stretch gap-2 text-[#424242] whitespace-nowrap leading-none mt-[29px]" aria-label="Project steps">
                 {Array.from({ length: totalSteps }, (_, index) => {

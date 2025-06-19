@@ -1,12 +1,11 @@
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../utils/translations';
 
 export const HeroSection: React.FC = () => {
-  const [language, setLanguage] = useState<'FI' | 'EN'>('FI');
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'FI' ? 'EN' : 'FI');
-  };
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
 
   return (
     <header className="w-full max-md:max-w-full">
@@ -25,16 +24,16 @@ export const HeroSection: React.FC = () => {
           {/* Navigation links in center */}
           <div className="flex items-center gap-12 text-black text-lg font-normal">
             <a href="#about" className="hover:text-gray-600 transition-colors border-b-2 border-black pb-1">
-              Meistä
+              {t.nav.about}
             </a>
             <a href="#services" className="hover:text-gray-600 transition-colors">
-              Palvelua
+              {t.nav.services}
             </a>
             <a href="#project" className="hover:text-gray-600 transition-colors">
-              Hanke
+              {t.nav.project}
             </a>
             <a href="#contact" className="hover:text-gray-600 transition-colors">
-              Yhteyttä
+              {t.nav.contact}
             </a>
           </div>
           
@@ -68,12 +67,10 @@ export const HeroSection: React.FC = () => {
             <div className="border-neutral-200 border z-10 flex shrink-0 h-[460px] rounded-[0px_0px_45px_0px] border-solid max-md:max-w-full" />
             <div className="w-[552px] max-w-full max-md:mr-[7px]">
               <h1 className="text-black text-[97px] leading-[89px] tracking-[2.91px] max-md:max-w-full max-md:text-[40px] max-md:leading-[41px]">
-                ROYS
-                <br />
-                REMONTTI
+                {t.hero.title}
               </h1>
               <p className="text-black text-[38px] leading-[51px] mt-4 max-md:max-w-full">
-                Rakennus- ja remonttipalvelut Varsinais-Suomessa
+                {t.hero.subtitle}
               </p>
             </div>
           </div>

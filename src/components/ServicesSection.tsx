@@ -1,4 +1,7 @@
+
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../utils/translations';
 
 interface ServiceCardProps {
   icon: string;
@@ -33,21 +36,24 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, has
 };
 
 export const ServicesSection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const services = [
     {
       icon: "https://cdn.builder.io/api/v1/image/assets/25f45d5e31b44bdd9067a3d1419748f2/e9919bf1848e6645aa32a896681f9d03a30069f5?placeholderIfAbsent=true",
-      title: "Rakentaminen",
-      description: "Rakennamme kestävät ja laadukkaat ratkaisut toiveidesi mukaan, olipa kyseessä uudisrakennus tai laajennus."
+      title: t.services.construction.title,
+      description: t.services.construction.description
     },
     {
       icon: "https://cdn.builder.io/api/v1/image/assets/25f45d5e31b44bdd9067a3d1419748f2/bc926ef4ae0c5677d6e42b5239e0d9da786e4093?placeholderIfAbsent=true",
-      title: "Remontointi",
-      description: "Toteutamme ammattitaitoiset remontit kotiisi tai liiketilaasi, aina laadukkaasti ja huolella."
+      title: t.services.renovation.title,
+      description: t.services.renovation.description
     },
     {
       icon: "https://cdn.builder.io/api/v1/image/assets/25f45d5e31b44bdd9067a3d1419748f2/9d64c5ff06f4b08331663d9e0c131e525cfdbcf5?placeholderIfAbsent=true",
-      title: "Sisustussuunnittelu",
-      description: "Luomme toimivia ja tyylikkäitä tiloja, jotka yhdistävät estetiikan ja käytännöllisyyden.",
+      title: t.services.interior.title,
+      description: t.services.interior.description,
       hasAccent: true
     }
   ];
@@ -55,7 +61,7 @@ export const ServicesSection: React.FC = () => {
   return (
     <section id="services" className="self-center flex w-full max-w-[1224px] flex-col items-stretch ml-3 mt-[154px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
       <h2 className="text-black text-[52px] font-normal leading-none tracking-[-1.5px] ml-2.5 max-md:text-[40px]">
-        Palvelumme
+        {t.services.title}
       </h2>
       <div className="mt-[11px] max-md:max-w-full">
         <div className="gap-5 flex max-md:flex-col max-md:items-stretch">

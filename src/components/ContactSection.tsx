@@ -1,4 +1,7 @@
+
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../utils/translations';
 
 interface FormData {
   name: string;
@@ -14,6 +17,9 @@ interface FormErrors {
 }
 
 export const ContactSection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+  
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -29,17 +35,17 @@ export const ContactSection: React.FC = () => {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Nimi on pakollinen';
+      newErrors.name = t.contact.form.validation.nameRequired;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Sähköposti on pakollinen';
+      newErrors.email = t.contact.form.validation.emailRequired;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Virheellinen sähköpostiosoite';
+      newErrors.email = t.contact.form.validation.emailInvalid;
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Viesti on pakollinen';
+      newErrors.message = t.contact.form.validation.messageRequired;
     }
 
     setErrors(newErrors);
@@ -76,7 +82,7 @@ export const ContactSection: React.FC = () => {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      setSubmitMessage('Kiitos viestistäsi! Otamme yhteyttä pian.');
+      setSubmitMessage(t.contact.form.successMessage);
       setFormData({
         name: '',
         email: '',
@@ -84,7 +90,7 @@ export const ContactSection: React.FC = () => {
         message: ''
       });
     } catch (error) {
-      setSubmitMessage('Viestin lähetys epäonnistui. Yritä uudelleen.');
+      setSubmitMessage(t.contact.form.errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -114,13 +120,13 @@ export const ContactSection: React.FC = () => {
       </aside>
       <address className="self-stretch flex flex-col text-[28px] text-[#5D5D5D] font-normal tracking-[0.56px] leading-10 my-auto not-italic">
         <h3 className="text-black text-3xl font-semibold leading-none tracking-[1px]">
-          Puhelin
+          {t.contact.phone}
         </h3>
         <a href="tel:+358401225544" className="text-[#5D5D5D] mt-2.5 hover:text-black transition-colors">
           Mobile: +(358) 040 122 5544
         </a>
         <h3 className="text-black text-3xl font-semibold leading-none tracking-[1px] self-stretch mt-6 max-md:mr-1.5">
-          Working Time
+          {t.contact.workingTime}
         </h3>
         <div className="text-[#5D5D5D] mt-2.5">
           Monday-Friday: 9:00 - 22:00
@@ -133,16 +139,15 @@ export const ContactSection: React.FC = () => {
       </address>
       <div className="self-stretch flex flex-col text-black font-normal max-md:max-w-full">
         <h2 className="text-[52px] leading-none tracking-[-1.5px] ml-[97px] max-md:text-[40px] max-md:ml-2.5">
-          Ota yhteyttä
+          {t.contact.title}
         </h2>
         <p className="text-[#5D5D5D] text-center text-2xl leading-8 tracking-[1px] mt-[15px] max-md:max-w-full">
-          Ota rohkeasti yhteyttä saadaksesi lisätietoja palveluistamme ja
-          projekteistamme.
+          {t.contact.subtitle}
         </p>
         <form onSubmit={handleSubmit} className="flex w-[530px] max-w-full flex-col items-stretch text-3xl mt-[52px] max-md:mt-10">
           <div className="mb-5">
             <label htmlFor="name" className="font-semibold leading-none tracking-[1px] ml-8 max-md:ml-2.5 block">
-              Sinun nimesi
+              {t.contact.form.name}
             </label>
             <input
               type="text"
@@ -150,7 +155,7 @@ export const ContactSection: React.FC = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              placeholder="Abc"
+              placeholder={t.contact.form.namePlaceholder}
               className={`bg-white border text-base mt-2 px-[30px] py-[26px] rounded-[40px] border-solid max-md:max-w-full max-md:px-5 w-full ${
                 errors.name ? 'border-red-500' : 'border-[rgba(159,159,159,1)]'
               } focus:outline-none focus:border-[rgba(18,3,92,1)] transition-colors`}
@@ -165,7 +170,7 @@ export const ContactSection: React.FC = () => {
 
           <div className="mb-5">
             <label htmlFor="email" className="font-semibold leading-none tracking-[1px] ml-8 max-md:ml-2.5 block">
-              Sähköpostiosoite
+              {t.contact.form.email}
             </label>
             <input
               type="email"
@@ -173,7 +178,7 @@ export const ContactSection: React.FC = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              placeholder="Abc@def.com"
+              placeholder={t.contact.form.emailPlaceholder}
               className={`bg-white border text-base mt-2 px-[30px] py-[26px] rounded-[40px] border-solid max-md:max-w-full max-md:px-5 w-full ${
                 errors.email ? 'border-red-500' : 'border-[rgba(159,159,159,1)]'
               } focus:outline-none focus:border-[rgba(18,3,92,1)] transition-colors`}
@@ -188,7 +193,7 @@ export const ContactSection: React.FC = () => {
 
           <div className="mb-5">
             <label htmlFor="subject" className="font-semibold leading-none tracking-[1px] ml-9 max-md:ml-2.5 block">
-              Aihe
+              {t.contact.form.subject}
             </label>
             <input
               type="text"
@@ -196,21 +201,21 @@ export const ContactSection: React.FC = () => {
               name="subject"
               value={formData.subject}
               onChange={handleInputChange}
-              placeholder="Tämä on valinnainen"
+              placeholder={t.contact.form.subjectPlaceholder}
               className="bg-white border text-base border-[rgba(159,159,159,1)] mt-2 px-[30px] py-[26px] rounded-[40px] border-solid max-md:max-w-full max-md:px-5 w-full focus:outline-none focus:border-[rgba(18,3,92,1)] transition-colors"
             />
           </div>
 
           <div className="mb-5">
             <label htmlFor="message" className="font-semibold leading-none tracking-[1px] ml-[30px] max-md:ml-2.5 block">
-              Viesti
+              {t.contact.form.message}
             </label>
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder="Hei! haluaisin tiedustella"
+              placeholder={t.contact.form.messagePlaceholder}
               rows={4}
               className={`bg-white border text-base mt-2 pt-[26px] pb-[26px] px-[30px] rounded-[40px] border-solid max-md:max-w-full max-md:mr-[3px] max-md:px-5 w-full resize-none ${
                 errors.message ? 'border-red-500' : 'border-[rgba(159,159,159,1)]'
@@ -231,13 +236,13 @@ export const ContactSection: React.FC = () => {
           >
             <div className="self-stretch flex w-[67px] flex-col items-stretch justify-center my-auto">
               <div className="text-white w-full">
-                {isSubmitting ? 'Lähetetään...' : 'Lähetä'}
+                {isSubmitting ? t.contact.form.sending : t.contact.form.send}
               </div>
             </div>
           </button>
 
           {submitMessage && (
-            <p className={`text-center mt-4 ${submitMessage.includes('Kiitos') ? 'text-green-600' : 'text-red-600'}`}>
+            <p className={`text-center mt-4 ${submitMessage.includes(language === 'FI' ? 'Kiitos' : 'Thank you') ? 'text-green-600' : 'text-red-600'}`}>
               {submitMessage}
             </p>
           )}
