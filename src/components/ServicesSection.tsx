@@ -77,17 +77,32 @@ export const ServicesSection: React.FC = () => {
           ))}
         </div>
         
-        {/* Mobile Layout - Horizontal Scroll */}
+        {/* Mobile Layout - Horizontal Scroll with improved visibility */}
         <div className="md:hidden overflow-x-auto">
-          <div className="flex gap-5 pb-4" style={{ width: 'max-content' }}>
+          <div className="flex gap-8 pb-4 px-2" style={{ width: 'calc(280px * 3 + 32px + 100px)' }}>
             {services.map((service, index) => (
-              <ServiceCard
+              <div key={index} className="relative">
+                <ServiceCard
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  hasAccent={service.hasAccent}
+                />
+                {/* Visual indicator for next card */}
+                {index < services.length - 1 && (
+                  <div className="absolute -right-4 top-1/2 transform -translate-y-1/2 w-2 h-12 bg-gradient-to-r from-transparent to-gray-300 opacity-60 rounded-r-lg"></div>
+                )}
+              </div>
+            ))}
+          </div>
+          
+          {/* Scroll indicator dots */}
+          <div className="flex justify-center gap-2 mt-4">
+            {services.map((_, index) => (
+              <div
                 key={index}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                hasAccent={service.hasAccent}
-              />
+                className="w-2 h-2 rounded-full bg-gray-300"
+              ></div>
             ))}
           </div>
         </div>
