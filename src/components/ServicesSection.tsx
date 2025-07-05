@@ -12,7 +12,7 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, hasAccent = false }) => {
   return (
-    <div className="w-[33%] max-md:w-full max-md:ml-0">
+    <div className="w-full md:w-[33%] max-md:min-w-[280px] max-md:flex-shrink-0">
       <div className="flex grow flex-col max-md:mt-3">
         {hasAccent && (
           <div className="bg-[rgba(0,170,170,1)] flex w-[194px] shrink-0 h-[194px]" />
@@ -64,7 +64,8 @@ export const ServicesSection: React.FC = () => {
         {t.services.title}
       </h2>
       <div className="mt-[11px] max-md:max-w-full">
-        <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
+        {/* Desktop Layout */}
+        <div className="hidden md:flex gap-5">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -74,6 +75,21 @@ export const ServicesSection: React.FC = () => {
               hasAccent={service.hasAccent}
             />
           ))}
+        </div>
+        
+        {/* Mobile Layout - Horizontal Scroll */}
+        <div className="md:hidden overflow-x-auto">
+          <div className="flex gap-5 pb-4" style={{ width: 'max-content' }}>
+            {services.map((service, index) => (
+              <ServiceCard
+                key={index}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                hasAccent={service.hasAccent}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
