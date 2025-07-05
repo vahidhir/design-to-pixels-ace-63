@@ -15,8 +15,8 @@ export const HeroSection: React.FC = () => {
 
   return (
     <header className="w-full max-md:max-w-full">
-      {/* Navigation Bar */}
-      <nav className="w-full bg-white px-[120px] max-md:px-5 py-4 border-b border-gray-200 max-md:border-none">
+      {/* Desktop Navigation Bar */}
+      <nav className="hidden md:block w-full bg-white px-[120px] max-md:px-5 py-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
           {/* Logo on the left */}
           <div className="flex items-center">
@@ -28,7 +28,7 @@ export const HeroSection: React.FC = () => {
           </div>
           
           {/* Desktop Navigation links in center */}
-          <div className="hidden md:flex items-center gap-12 text-black text-lg font-normal">
+          <div className="flex items-center gap-12 text-black text-lg font-normal">
             <a href="#about" className="hover:text-gray-600 transition-colors border-b-2 border-black pb-1">
               {t.nav.about}
             </a>
@@ -44,7 +44,7 @@ export const HeroSection: React.FC = () => {
           </div>
           
           {/* Desktop Language toggle on the right */}
-          <div className="hidden md:flex items-center gap-2 text-base">
+          <div className="flex items-center gap-2 text-base">
             <button
               onClick={toggleLanguage}
               className={`px-3 py-1 rounded transition-colors ${
@@ -63,18 +63,6 @@ export const HeroSection: React.FC = () => {
               EN
             </button>
           </div>
-
-          {/* Mobile Hamburger Menu */}
-          <button
-            onClick={toggleMobileMenu}
-            className="md:hidden p-2"
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-white" />
-            ) : (
-              <Menu className="h-6 w-6 text-white" />
-            )}
-          </button>
         </div>
 
         {/* Mobile Menu Overlay */}
@@ -163,18 +151,36 @@ export const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Layout - Banner at top */}
+        {/* Mobile Layout - Banner with overlay elements */}
         <div className="md:hidden w-full">
-          <div className="relative w-full h-[60vh] min-h-[400px]">
+          <div className="relative w-full h-[100vh] min-h-[500px]">
+            {/* Background Image */}
             <img
               src="https://cdn.builder.io/api/v1/image/assets/25f45d5e31b44bdd9067a3d1419748f2/4ac91c378795973bad1afcd345bd043d0ae3a4b1?placeholderIfAbsent=true"
               alt="Construction site"
               className="absolute h-full w-full object-cover inset-0"
             />
+            
             {/* Black gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            
+            {/* Top overlay with logo and hamburger */}
+            <div className="absolute top-0 left-0 right-0 flex items-center justify-between p-5 z-20">
+              <img
+                src="/lovable-uploads/aca98719-3220-4ed9-8a17-20c2f95f28bc.png"
+                alt="ROYS REMONTTI logo"
+                className="h-12 w-auto object-contain"
+              />
+              <button
+                onClick={toggleMobileMenu}
+                className="p-2"
+              >
+                <Menu className="h-6 w-6 text-white" />
+              </button>
+            </div>
+            
             {/* Text content over the image */}
-            <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+            <div className="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
               <h1 className="text-[48px] leading-[44px] tracking-[1.5px] font-normal mb-4">
                 {t.hero.title}
               </h1>
