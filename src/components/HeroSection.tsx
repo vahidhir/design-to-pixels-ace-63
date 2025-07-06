@@ -28,7 +28,7 @@ export const HeroSection: React.FC = () => {
           </div>
           
           {/* Desktop Navigation links in center */}
-          <div className="flex items-center gap-12 text-black text-lg font-normal">
+          <div className="flex items-center gap-12 text-black text-base font-normal">
             <a href="#about" className="hover:text-gray-600 transition-colors border-b-2 border-black pb-1">
               {t.nav.about}
             </a>
@@ -64,56 +64,56 @@ export const HeroSection: React.FC = () => {
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 bg-white z-50 flex flex-col">
-            <div className="flex items-center justify-between p-5 border-b">
-              <img
-                src="/lovable-uploads/aca98719-3220-4ed9-8a17-20c2f95f28bc.png"
-                alt="ROYS REMONTTI logo"
-                className="h-12 w-auto object-contain"
-              />
-              <button onClick={toggleMobileMenu}>
-                <X className="h-6 w-6 text-black" />
+      {/* Mobile Menu Overlay - Fixed positioning */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 bg-white z-50 flex flex-col">
+          <div className="flex items-center justify-between p-5 border-b">
+            <img
+              src="/lovable-uploads/aca98719-3220-4ed9-8a17-20c2f95f28bc.png"
+              alt="ROYS REMONTTI logo"
+              className="h-12 w-auto object-contain"
+            />
+            <button onClick={toggleMobileMenu} className="p-2">
+              <X className="h-6 w-6 text-black" />
+            </button>
+          </div>
+          <div className="flex flex-col items-center gap-8 pt-12 text-black text-lg font-normal">
+            <a href="#about" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
+              {t.nav.about}
+            </a>
+            <a href="#services" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
+              {t.nav.services}
+            </a>
+            <a href="#project" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
+              {t.nav.project}
+            </a>
+            <a href="#contact" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
+              {t.nav.contact}
+            </a>
+            <div className="flex items-center gap-2 text-base mt-8">
+              <button
+                onClick={toggleLanguage}
+                className={`px-3 py-1 rounded transition-colors ${
+                  language === 'FI' ? 'bg-black text-white' : 'text-gray-600 hover:text-black'
+                }`}
+              >
+                FI
+              </button>
+              <span className="text-gray-400">|</span>
+              <button
+                onClick={toggleLanguage}
+                className={`px-3 py-1 rounded transition-colors ${
+                  language === 'EN' ? 'bg-black text-white' : 'text-gray-600 hover:text-black'
+                }`}
+              >
+                EN
               </button>
             </div>
-            <div className="flex flex-col items-center gap-8 pt-12 text-black text-xl font-normal">
-              <a href="#about" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
-                {t.nav.about}
-              </a>
-              <a href="#services" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
-                {t.nav.services}
-              </a>
-              <a href="#project" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
-                {t.nav.project}
-              </a>
-              <a href="#contact" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
-                {t.nav.contact}
-              </a>
-              <div className="flex items-center gap-2 text-base mt-8">
-                <button
-                  onClick={toggleLanguage}
-                  className={`px-3 py-1 rounded transition-colors ${
-                    language === 'FI' ? 'bg-black text-white' : 'text-gray-600 hover:text-black'
-                  }`}
-                >
-                  FI
-                </button>
-                <span className="text-gray-400">|</span>
-                <button
-                  onClick={toggleLanguage}
-                  className={`px-3 py-1 rounded transition-colors ${
-                    language === 'EN' ? 'bg-black text-white' : 'text-gray-600 hover:text-black'
-                  }`}
-                >
-                  EN
-                </button>
-              </div>
-            </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
 
       {/* Hero Content */}
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch px-[120px] max-md:px-0 mt-8 max-md:mt-0">
@@ -122,10 +122,10 @@ export const HeroSection: React.FC = () => {
           <div className="z-10 flex mr-[-153px] flex-col items-stretch font-normal max-md:max-w-full">
             <div className="border-neutral-200 border z-10 flex shrink-0 h-[460px] rounded-[0px_0px_45px_0px] border-solid max-md:max-w-full" />
             <div className="w-[552px] max-w-full max-md:mr-[7px]">
-              <h1 className="text-black text-[97px] leading-[89px] tracking-[2.91px] max-md:max-w-full max-md:text-[40px] max-md:leading-[41px]">
+              <h1 className="text-black text-4xl md:text-[2.25rem] leading-tight tracking-wide max-md:max-w-full">
                 {t.hero.title}
               </h1>
-              <p className="text-black text-[38px] leading-[51px] mt-4 max-md:max-w-full">
+              <p className="text-black text-lg md:text-xl leading-relaxed mt-4 max-md:max-w-full">
                 {t.hero.subtitle}
               </p>
             </div>
@@ -173,7 +173,7 @@ export const HeroSection: React.FC = () => {
               />
               <button
                 onClick={toggleMobileMenu}
-                className="p-2"
+                className="p-2 bg-black/20 rounded-md backdrop-blur-sm"
               >
                 <Menu className="h-6 w-6 text-white" />
               </button>
@@ -181,10 +181,10 @@ export const HeroSection: React.FC = () => {
             
             {/* Text content over the image */}
             <div className="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
-              <h1 className="text-[48px] leading-[44px] tracking-[1.5px] font-normal mb-4">
+              <h1 className="text-[1.875rem] leading-tight tracking-wide font-normal mb-4">
                 {t.hero.title}
               </h1>
-              <p className="text-[24px] leading-[32px] font-normal">
+              <p className="text-[1.125rem] leading-relaxed font-normal">
                 {t.hero.subtitle}
               </p>
             </div>

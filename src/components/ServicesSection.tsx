@@ -23,10 +23,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, has
             alt={`${title} icon`}
             className="aspect-[1] object-contain w-28 max-w-full"
           />
-          <h3 className="text-[#030605] text-3xl font-semibold leading-none tracking-[1px] mt-[30px]">
+          <h3 className="text-[#030605] text-2xl md:text-[1.875rem] font-semibold leading-tight tracking-wide mt-[30px] max-md:text-[1.5rem]">
             {title}
           </h3>
-          <p className="text-[#5D5D5D] text-[22px] font-normal leading-[30px] tracking-[0.44px] mt-1.5">
+          <p className="text-[#5D5D5D] text-base font-normal leading-relaxed tracking-wide mt-1.5">
             {description}
           </p>
         </article>
@@ -60,7 +60,7 @@ export const ServicesSection: React.FC = () => {
 
   return (
     <section id="services" className="self-center flex w-full max-w-[1224px] flex-col items-stretch ml-3 mt-[154px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
-      <h2 className="text-black text-[52px] font-normal leading-none tracking-[-1.5px] ml-2.5 max-md:text-[40px]">
+      <h2 className="text-black text-2xl md:text-[1.875rem] font-normal leading-tight tracking-wide ml-2.5 max-md:text-[1.5rem]">
         {t.services.title}
       </h2>
       <div className="mt-[11px] max-md:max-w-full">
