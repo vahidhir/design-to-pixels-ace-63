@@ -49,48 +49,93 @@ export const ProjectSection: React.FC = () => {
 
   return (
     <section id="project" className="w-full max-w-[1320px] mt-[113px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
-      <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
-        <div className="w-[45%] max-md:w-full max-md:ml-0">
-          <article className="flex flex-col font-normal max-md:max-w-full max-md:mt-10">
-            <div className="border w-[411px] max-w-full text-[52px] text-black tracking-[-1.5px] leading-none pt-[88px] pb-4 px-[70px] rounded-[200px] border-[rgba(195,195,195,1)] border-solid max-md:text-[40px] max-md:pr-[-13px] max-md:pl-5">
-              {t.project.title}
+      <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
+        <div className="flex flex-col w-[45%] max-md:w-full max-md:ml-0">
+          <div className="flex flex-col items-stretch text-black max-md:max-w-full max-md:mt-10">
+            <div className="flex items-center gap-5 text-[70px] leading-[63px] font-normal tracking-[2.1px] max-md:text-[40px] max-md:leading-[36px] max-md:tracking-[1.2px]">
+              <h2 className="grow shrink-0 basis-auto max-md:max-w-full">
+                {t.project.title}
+              </h2>
             </div>
-            <div className="flex w-[454px] max-w-full flex-col text-[22px] tracking-[0.44px] mt-[42px] max-md:mt-10">
-              <h3 className="text-black text-3xl font-semibold leading-none tracking-[1px]">
+            <div className="flex w-[454px] max-w-full flex-col text-[22px] max-md:text-[16px] tracking-[0.44px] max-md:tracking-[0.32px] mt-[42px] max-md:mt-6">
+              <h3 className="text-black text-3xl max-md:text-xl font-semibold leading-none tracking-[1px] max-md:tracking-[0.6px]">
                 {currentItem.title}
               </h3>
-              <p className="text-[#5D5D5D] leading-[30px] self-stretch mt-[26px] max-md:max-w-full">
+              <p className="text-[#5D5D5D] leading-[30px] max-md:leading-[24px] max-md:text-sm self-stretch mt-[26px] max-md:mt-4 max-md:max-w-full">
                 {currentItem.description}
               </p>
-              <nav className="flex w-[300px] max-w-full items-stretch gap-2 text-[#424242] whitespace-nowrap leading-none mt-[29px]" aria-label="Project steps">
+              
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex w-[300px] max-w-full items-stretch gap-2 text-[#424242] whitespace-nowrap leading-none mt-[29px]" aria-label="Project steps">
                 {Array.from({ length: totalSteps }, (_, index) => {
-                  const step = index + 1;
-                  const isActive = step === currentStep;
+                  const stepNumber = index + 1;
+                  const isActive = stepNumber === currentStep;
                   return (
                     <button
-                      key={step}
-                      onClick={() => handleStepClick(step)}
-                      className={`w-9 h-9 pb-1.5 px-3.5 rounded-[50%] transition-colors ${
+                      key={stepNumber}
+                      onClick={() => handleStepClick(stepNumber)}
+                      className={`flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ${
                         isActive
-                          ? 'bg-[rgba(18,3,92,1)] text-white'
-                          : 'border border-[rgba(220,220,220,1)] border-solid hover:bg-gray-100'
+                          ? 'bg-black text-white border-black'
+                          : 'bg-white text-[#424242] border-[#E5E5E5] hover:border-black hover:text-black'
                       }`}
-                      aria-label={`Step ${step}`}
-                      aria-current={isActive ? 'step' : undefined}
+                      aria-label={`Go to project ${stepNumber}`}
+                      aria-current={isActive ? 'true' : 'false'}
                     >
-                      {step}
+                      {stepNumber}
                     </button>
                   );
                 })}
               </nav>
+
+              {/* Mobile Navigation - Horizontal scrollable */}
+              <div className="md:hidden mt-6">
+                <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                  {Array.from({ length: totalSteps }, (_, index) => {
+                    const stepNumber = index + 1;
+                    const isActive = stepNumber === currentStep;
+                    return (
+                      <button
+                        key={stepNumber}
+                        onClick={() => handleStepClick(stepNumber)}
+                        className={`flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300 text-sm ${
+                          isActive
+                            ? 'bg-black text-white border-black'
+                            : 'bg-white text-[#424242] border-[#E5E5E5]'
+                        }`}
+                        aria-label={`Go to project ${stepNumber}`}
+                        aria-current={isActive ? 'true' : 'false'}
+                      >
+                        {stepNumber}
+                      </button>
+                    );
+                  })}
+                </div>
+                
+                {/* Mobile step indicator */}
+                <div className="flex justify-center mt-3 gap-2">
+                  {Array.from({ length: totalSteps }, (_, index) => {
+                    const stepNumber = index + 1;
+                    const isActive = stepNumber === currentStep;
+                    return (
+                      <div
+                        key={stepNumber}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          isActive ? 'bg-black' : 'bg-gray-300'
+                        }`}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
             </div>
-          </article>
+          </div>
         </div>
-        <div className="w-[55%] ml-5 max-md:w-full max-md:ml-0">
+        <div className="w-[55%] ml-5 max-md:w-full max-md:ml-0 max-md:mt-6">
           <img
             src={currentItem.image}
             alt={currentItem.title}
-            className="aspect-[1.68] object-contain w-full grow mt-[106px] rounded-[0px_60px_60px_60px] max-md:max-w-full max-md:mt-10 transition-opacity duration-300"
+            className="aspect-[1.68] object-cover w-full grow mt-[106px] max-md:mt-0 rounded-[0px_60px_60px_60px] max-md:rounded-[0px_30px_30px_30px] max-md:max-w-full transition-opacity duration-300"
           />
         </div>
       </div>
