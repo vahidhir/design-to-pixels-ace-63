@@ -12,26 +12,26 @@ export const AboutSection: React.FC = () => {
       <div className="bg-[rgba(0,170,170,1)] flex w-[47px] shrink-0 h-[829px] rounded-[0px_150px_150px_0px] max-md:hidden" />
       <div className="font-normal mt-[26px] max-md:max-w-full">
         <article className="flex max-w-full w-[793px] flex-col items-stretch pr-[72px] pb-3 rounded-[0px_0px_0px_0px] max-md:pr-5">
-          <h2 className="text-black text-[52px] leading-none tracking-[-1.5px] max-md:text-[40px]">
+          <h2 className="text-black text-2xl md:text-[1.875rem] leading-tight tracking-wide max-md:text-[1.5rem]">
             {t.about.title}
           </h2>
-          <p className="text-[#5D5D5D] text-[28px] leading-10 tracking-[0.56px] max-md:max-w-full">
+          <p className="text-[#5D5D5D] text-lg md:text-xl leading-relaxed tracking-wide max-md:max-w-full max-md:text-[1.125rem]">
             {t.about.description}
           </p>
         </article>
         <article className="flex max-w-full w-[796px] flex-col items-stretch mt-[30px] pr-11 pb-3 rounded-[0px_0px_0px_0px] max-md:pr-5">
-          <h2 className="text-black text-[52px] leading-none tracking-[-1.5px] max-md:text-[40px]">
+          <h2 className="text-black text-2xl md:text-[1.875rem] leading-tight tracking-wide max-md:text-[1.5rem]">
             {t.about.servicesTitle}
           </h2>
-          <p className="text-[#5D5D5D] text-[28px] leading-10 tracking-[0.56px] max-md:max-w-full">
+          <p className="text-[#5D5D5D] text-lg md:text-xl leading-relaxed tracking-wide max-md:max-w-full max-md:text-[1.125rem]">
             {t.about.servicesDescription}
           </p>
         </article>
         <article className="flex max-w-full w-[793px] flex-col mt-[30px] pr-20 pb-2 rounded-[0px_0px_0px_0px] max-md:pr-5">
-          <h2 className="text-black text-[52px] leading-none tracking-[-1.5px] max-md:text-[40px]">
+          <h2 className="text-black text-2xl md:text-[1.875rem] leading-tight tracking-wide max-md:text-[1.5rem]">
             {t.about.strengthsTitle}
           </h2>
-          <div className="text-[#5D5D5D] text-[28px] leading-10 tracking-[0.56px] max-md:max-w-full">
+          <div className="text-[#5D5D5D] text-lg md:text-xl leading-relaxed tracking-wide max-md:max-w-full max-md:text-[1.125rem]">
             {t.about.strengths.map((strength, index) => (
               <div key={index}>✔ {strength}</div>
             ))}
@@ -53,18 +53,18 @@ export const AboutSection: React.FC = () => {
         />
         <div className="flex w-44 max-w-full flex-col items-stretch font-normal whitespace-nowrap text-center">
           <div className="w-full">
-            <div className="text-black text-[90px] leading-none tracking-[-1px] max-md:text-[40px]">
+            <div className="text-black text-[1.875rem] md:text-[2.25rem] leading-tight tracking-wide max-md:text-[1.875rem]">
               +100
             </div>
-            <div className="text-[#5D5D5D] text-2xl leading-8 tracking-[1px]">
+            <div className="text-[#5D5D5D] text-base leading-relaxed tracking-wide">
               {t.about.stats.projects}
             </div>
           </div>
           <div className="self-center w-[103px] max-w-full mt-[17px]">
-            <div className="text-black text-[90px] leading-none tracking-[-1px] max-md:text-[40px]">
+            <div className="text-black text-[1.875rem] md:text-[2.25rem] leading-tight tracking-wide max-md:text-[1.875rem]">
               17
             </div>
-            <div className="text-[#5D5D5D] text-2xl leading-8 tracking-[1px]">
+            <div className="text-[#5D5D5D] text-base leading-relaxed tracking-wide">
               {t.about.stats.experience}
             </div>
           </div>
@@ -76,7 +76,7 @@ export const AboutSection: React.FC = () => {
         />
         <a
           href="#contact"
-          className="bg-[rgba(18,3,92,1)] flex w-[201px] max-w-full items-center overflow-hidden text-[22px] text-white font-normal leading-none justify-center mt-6 px-10 py-4 rounded-[41px] max-md:px-5 hover:bg-[rgba(18,3,92,0.9)] transition-colors"
+          className="bg-[rgba(18,3,92,1)] flex w-[201px] max-w-full items-center overflow-hidden text-base text-white font-normal leading-none justify-center mt-6 px-10 py-4 rounded-[41px] max-md:px-5 hover:bg-[rgba(18,3,92,0.9)] transition-colors"
         >
           <div className="self-stretch flex w-[121px] flex-col items-stretch justify-center my-auto">
             <div className="text-white w-full">

@@ -51,7 +51,7 @@ export const ProjectSection: React.FC = () => {
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
         <div className="flex flex-col w-[45%] max-md:w-full max-md:ml-0">
           <div className="flex flex-col items-stretch text-black max-md:max-w-full max-md:mt-10">
-            <div className="flex items-center gap-5 text-[70px] leading-[63px] font-normal tracking-[2.1px] max-md:text-[32px] max-md:leading-[30px] max-md:tracking-[1px]">
+            <div className="flex items-center gap-5 text-[1.875rem] md:text-[2.25rem] leading-tight font-normal tracking-wide max-md:text-[1.5rem]">
               <h2 className="grow shrink-0 basis-auto max-md:max-w-full">
                 {t.project.title}
               </h2>
@@ -91,14 +91,14 @@ export const ProjectSection: React.FC = () => {
                         <div className="p-1">
                           <div className="flex flex-col space-y-3">
                             <div className="flex items-center justify-between">
-                              <h3 className="text-black text-lg font-semibold leading-none tracking-[0.6px]">
+                              <h3 className="text-black text-[1.5rem] font-semibold leading-tight tracking-wide">
                                 {item.title}
                               </h3>
                               <div className="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm">
                                 {stepNumber}
                               </div>
                             </div>
-                            <p className="text-[#5D5D5D] leading-[20px] text-xs">
+                            <p className="text-[#5D5D5D] leading-relaxed text-base">
                               {item.description}
                             </p>
                             <img
@@ -118,11 +118,11 @@ export const ProjectSection: React.FC = () => {
             </div>
 
             {/* Desktop Content */}
-            <div className="hidden md:block w-[454px] max-w-full flex-col text-[22px] tracking-[0.44px] mt-[42px]">
-              <h3 className="text-black text-3xl font-semibold leading-none tracking-[1px]">
+            <div className="hidden md:block w-[454px] max-w-full flex-col text-base tracking-wide mt-[42px]">
+              <h3 className="text-black text-2xl md:text-[1.875rem] font-semibold leading-tight tracking-wide max-md:text-[1.5rem]">
                 {portfolioItems[currentStep as keyof typeof portfolioItems].title}
               </h3>
-              <p className="text-[#5D5D5D] leading-[30px] self-stretch mt-[26px] max-w-full">
+              <p className="text-[#5D5D5D] leading-relaxed self-stretch mt-[26px] max-w-full">
                 {portfolioItems[currentStep as keyof typeof portfolioItems].description}
               </p>
             </div>
