@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../utils/translations';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 export const ProjectSection: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -45,97 +46,95 @@ export const ProjectSection: React.FC = () => {
     }
   };
 
-  const currentItem = portfolioItems[currentStep as keyof typeof portfolioItems];
-
   return (
     <section id="project" className="w-full max-w-[1320px] mt-[113px] max-md:max-w-full max-md:mt-10 px-[120px] max-md:px-5">
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
         <div className="flex flex-col w-[45%] max-md:w-full max-md:ml-0">
           <div className="flex flex-col items-stretch text-black max-md:max-w-full max-md:mt-10">
-            <div className="flex items-center gap-5 text-[70px] leading-[63px] font-normal tracking-[2.1px] max-md:text-[40px] max-md:leading-[36px] max-md:tracking-[1.2px]">
+            <div className="flex items-center gap-5 text-[70px] leading-[63px] font-normal tracking-[2.1px] max-md:text-[32px] max-md:leading-[30px] max-md:tracking-[1px]">
               <h2 className="grow shrink-0 basis-auto max-md:max-w-full">
                 {t.project.title}
               </h2>
             </div>
-            <div className="flex w-[454px] max-w-full flex-col text-[22px] max-md:text-[16px] tracking-[0.44px] max-md:tracking-[0.32px] mt-[42px] max-md:mt-6">
-              <h3 className="text-black text-3xl max-md:text-xl font-semibold leading-none tracking-[1px] max-md:tracking-[0.6px]">
-                {currentItem.title}
-              </h3>
-              <p className="text-[#5D5D5D] leading-[30px] max-md:leading-[24px] max-md:text-sm self-stretch mt-[26px] max-md:mt-4 max-md:max-w-full">
-                {currentItem.description}
-              </p>
-              
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex w-[300px] max-w-full items-stretch gap-2 text-[#424242] whitespace-nowrap leading-none mt-[29px]" aria-label="Project steps">
-                {Array.from({ length: totalSteps }, (_, index) => {
-                  const stepNumber = index + 1;
-                  const isActive = stepNumber === currentStep;
-                  return (
-                    <button
-                      key={stepNumber}
-                      onClick={() => handleStepClick(stepNumber)}
-                      className={`flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ${
-                        isActive
-                          ? 'bg-black text-white border-black'
-                          : 'bg-white text-[#424242] border-[#E5E5E5] hover:border-black hover:text-black'
-                      }`}
-                      aria-label={`Go to project ${stepNumber}`}
-                      aria-current={isActive ? 'true' : 'false'}
-                    >
-                      {stepNumber}
-                    </button>
-                  );
-                })}
-              </nav>
+            
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex w-[300px] max-w-full items-stretch gap-2 text-[#424242] whitespace-nowrap leading-none mt-[29px]" aria-label="Project steps">
+              {Array.from({ length: totalSteps }, (_, index) => {
+                const stepNumber = index + 1;
+                const isActive = stepNumber === currentStep;
+                return (
+                  <button
+                    key={stepNumber}
+                    onClick={() => handleStepClick(stepNumber)}
+                    className={`flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ${
+                      isActive
+                        ? 'bg-black text-white border-black'
+                        : 'bg-white text-[#424242] border-[#E5E5E5] hover:border-black hover:text-black'
+                    }`}
+                    aria-label={`Go to project ${stepNumber}`}
+                    aria-current={isActive ? 'true' : 'false'}
+                  >
+                    {stepNumber}
+                  </button>
+                );
+              })}
+            </nav>
 
-              {/* Mobile Navigation - Horizontal scrollable */}
-              <div className="md:hidden mt-6">
-                <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                  {Array.from({ length: totalSteps }, (_, index) => {
-                    const stepNumber = index + 1;
-                    const isActive = stepNumber === currentStep;
+            {/* Mobile Carousel Navigation */}
+            <div className="md:hidden mt-6">
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {Object.entries(portfolioItems).map(([key, item]) => {
+                    const stepNumber = parseInt(key);
                     return (
-                      <button
-                        key={stepNumber}
-                        onClick={() => handleStepClick(stepNumber)}
-                        className={`flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300 text-sm ${
-                          isActive
-                            ? 'bg-black text-white border-black'
-                            : 'bg-white text-[#424242] border-[#E5E5E5]'
-                        }`}
-                        aria-label={`Go to project ${stepNumber}`}
-                        aria-current={isActive ? 'true' : 'false'}
-                      >
-                        {stepNumber}
-                      </button>
+                      <CarouselItem key={stepNumber} className="basis-full">
+                        <div className="p-1">
+                          <div className="flex flex-col space-y-3">
+                            <div className="flex items-center justify-between">
+                              <h3 className="text-black text-lg font-semibold leading-none tracking-[0.6px]">
+                                {item.title}
+                              </h3>
+                              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm">
+                                {stepNumber}
+                              </div>
+                            </div>
+                            <p className="text-[#5D5D5D] leading-[20px] text-xs">
+                              {item.description}
+                            </p>
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="aspect-[1.68] object-cover w-full rounded-[0px_20px_20px_20px] transition-opacity duration-300"
+                            />
+                          </div>
+                        </div>
+                      </CarouselItem>
                     );
                   })}
-                </div>
-                
-                {/* Mobile step indicator */}
-                <div className="flex justify-center mt-3 gap-2">
-                  {Array.from({ length: totalSteps }, (_, index) => {
-                    const stepNumber = index + 1;
-                    const isActive = stepNumber === currentStep;
-                    return (
-                      <div
-                        key={stepNumber}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          isActive ? 'bg-black' : 'bg-gray-300'
-                        }`}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+              </Carousel>
+            </div>
+
+            {/* Desktop Content */}
+            <div className="hidden md:block w-[454px] max-w-full flex-col text-[22px] tracking-[0.44px] mt-[42px]">
+              <h3 className="text-black text-3xl font-semibold leading-none tracking-[1px]">
+                {portfolioItems[currentStep as keyof typeof portfolioItems].title}
+              </h3>
+              <p className="text-[#5D5D5D] leading-[30px] self-stretch mt-[26px] max-w-full">
+                {portfolioItems[currentStep as keyof typeof portfolioItems].description}
+              </p>
             </div>
           </div>
         </div>
-        <div className="w-[55%] ml-5 max-md:w-full max-md:ml-0 max-md:mt-6">
+        
+        {/* Desktop Image */}
+        <div className="hidden md:block w-[55%] ml-5">
           <img
-            src={currentItem.image}
-            alt={currentItem.title}
-            className="aspect-[1.68] object-cover w-full grow mt-[106px] max-md:mt-0 rounded-[0px_60px_60px_60px] max-md:rounded-[0px_30px_30px_30px] max-md:max-w-full transition-opacity duration-300"
+            src={portfolioItems[currentStep as keyof typeof portfolioItems].image}
+            alt={portfolioItems[currentStep as keyof typeof portfolioItems].title}
+            className="aspect-[1.68] object-cover w-full grow mt-[106px] rounded-[0px_60px_60px_60px] transition-opacity duration-300"
           />
         </div>
       </div>
