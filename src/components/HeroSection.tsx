@@ -66,52 +66,89 @@ export const HeroSection: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay - Fixed positioning */}
+      {/* Mobile Menu Overlay - Redesigned based on the image */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white z-50 flex flex-col">
-          <div className="flex items-center justify-between p-5 border-b">
-            <img
-              src="/lovable-uploads/aca98719-3220-4ed9-8a17-20c2f95f28bc.png"
-              alt="ROYS REMONTTI logo"
-              className="h-12 w-auto object-contain"
-            />
-            <button onClick={toggleMobileMenu} className="p-2">
-              <X className="h-6 w-6 text-black" />
-            </button>
-          </div>
-          <div className="flex flex-col items-center gap-8 pt-12 text-black text-lg font-normal">
-            <a href="#about" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
-              {t.nav.about}
-            </a>
-            <a href="#services" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
-              {t.nav.services}
-            </a>
-            <a href="#project" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
-              {t.nav.project}
-            </a>
-            <a href="#contact" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
-              {t.nav.contact}
-            </a>
-            <div className="flex items-center gap-2 text-base mt-8">
-              <button
-                onClick={toggleLanguage}
-                className={`px-3 py-1 rounded transition-colors ${
-                  language === 'FI' ? 'bg-black text-white' : 'text-gray-600 hover:text-black'
-                }`}
+        <div className="md:hidden fixed inset-0 bg-white z-50 flex">
+          {/* Left sidebar menu */}
+          <div className="w-80 bg-white shadow-lg flex flex-col">
+            {/* Header with logo and close button */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+              <img
+                src="/lovable-uploads/aca98719-3220-4ed9-8a17-20c2f95f28bc.png"
+                alt="ROYS REMONTTI logo"
+                className="h-10 w-auto object-contain"
+              />
+              <button 
+                onClick={toggleMobileMenu} 
+                className="w-12 h-12 bg-[#2D1B69] rounded-full flex items-center justify-center"
               >
-                FI
-              </button>
-              <span className="text-gray-400">|</span>
-              <button
-                onClick={toggleLanguage}
-                className={`px-3 py-1 rounded transition-colors ${
-                  language === 'EN' ? 'bg-black text-white' : 'text-gray-600 hover:text-black'
-                }`}
-              >
-                EN
+                <X className="h-6 w-6 text-white" />
               </button>
             </div>
+            
+            {/* Navigation items */}
+            <div className="flex-1 px-6 py-8">
+              <nav className="space-y-6">
+                <a 
+                  href="#about" 
+                  onClick={toggleMobileMenu} 
+                  className="block text-[#2D1B69] text-2xl font-medium leading-relaxed hover:text-gray-600 transition-colors"
+                >
+                  {t.nav.about}
+                </a>
+                <a 
+                  href="#services" 
+                  onClick={toggleMobileMenu} 
+                  className="block text-[#2D1B69] text-2xl font-medium leading-relaxed hover:text-gray-600 transition-colors"
+                >
+                  {t.nav.services}
+                </a>
+                <a 
+                  href="#project" 
+                  onClick={toggleMobileMenu} 
+                  className="block text-[#2D1B69] text-2xl font-medium leading-relaxed hover:text-gray-600 transition-colors"
+                >
+                  {t.nav.project}
+                </a>
+                <a 
+                  href="#contact" 
+                  onClick={toggleMobileMenu} 
+                  className="block text-[#2D1B69] text-2xl font-medium leading-relaxed hover:text-gray-600 transition-colors"
+                >
+                  {t.nav.contact}
+                </a>
+              </nav>
+            </div>
+            
+            {/* Language toggle at bottom */}
+            <div className="p-6 border-t border-gray-100">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={toggleLanguage}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    language === 'FI' ? 'bg-[#2D1B69] text-white' : 'text-gray-600 hover:text-[#2D1B69]'
+                  }`}
+                >
+                  FI
+                </button>
+                <span className="text-gray-300">|</span>
+                <button
+                  onClick={toggleLanguage}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    language === 'EN' ? 'bg-[#2D1B69] text-white' : 'text-gray-600 hover:text-[#2D1B69]'
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+            </div>
           </div>
+          
+          {/* Right side overlay - clickable area to close menu */}
+          <div 
+            className="flex-1 bg-black bg-opacity-20 backdrop-blur-sm"
+            onClick={toggleMobileMenu}
+          />
         </div>
       )}
 
@@ -173,7 +210,7 @@ export const HeroSection: React.FC = () => {
               />
               <button
                 onClick={toggleMobileMenu}
-                className="p-2 bg-black/20 rounded-md backdrop-blur-sm"
+                className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
               >
                 <Menu className="h-6 w-6 text-white" />
               </button>
