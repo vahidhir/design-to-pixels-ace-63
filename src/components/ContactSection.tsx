@@ -30,14 +30,14 @@ export const ContactSection: React.FC = () => {
             />
           </div>
         </aside>
-        <address className="self-stretch flex flex-col text-lg md:text-xl text-[#5D5D5D] font-normal tracking-wide leading-relaxed my-auto not-italic max-md:text-[1.125rem]">
-          <h3 className="text-black text-2xl md:text-[1.875rem] font-semibold leading-tight tracking-wide max-md:text-[1.5rem]">
+        <address className="self-stretch flex flex-col text-[28px] text-[#5D5D5D] font-normal tracking-[0.56px] leading-10 my-auto not-italic">
+          <h3 className="text-black text-3xl font-semibold leading-none tracking-[1px]">
             {t.contact.phone}
           </h3>
           <a href="tel:+358401225544" className="text-[#5D5D5D] mt-2.5 hover:text-black transition-colors">
             Mobile: +(358) 040 122 5544
           </a>
-          <h3 className="text-black text-2xl md:text-[1.875rem] font-semibold leading-tight tracking-wide self-stretch mt-6 max-md:mr-1.5 max-md:text-[1.5rem]">
+          <h3 className="text-black text-3xl font-semibold leading-none tracking-[1px] self-stretch mt-6 max-md:mr-1.5">
             {t.contact.workingTime}
           </h3>
           <div className="text-[#5D5D5D] mt-2.5">
@@ -50,16 +50,16 @@ export const ContactSection: React.FC = () => {
           </div>
         </address>
         <div className="self-stretch flex flex-col text-black font-normal max-md:max-w-full">
-          <h2 className="text-[1.875rem] md:text-[2.25rem] leading-tight tracking-wide ml-[97px] max-md:text-[1.5rem] max-md:ml-2.5">
+          <h2 className="text-[52px] leading-none tracking-[-1.5px] ml-[97px] max-md:text-[40px] max-md:ml-2.5">
             {t.contact.title}
           </h2>
-          <p className="text-[#5D5D5D] text-center text-lg md:text-xl leading-relaxed tracking-wide mt-[15px] max-md:max-w-full max-md:text-[1.125rem]">
+          <p className="text-[#5D5D5D] text-center text-2xl leading-8 tracking-[1px] mt-[15px] max-md:max-w-full">
             {t.contact.subtitle}
           </p>
           <div className="text-center mt-[52px] max-md:mt-10">
             <a 
               href="mailto:info@roysremontti.com" 
-              className="text-lg md:text-xl text-[rgba(18,3,92,1)] font-semibold hover:underline transition-colors max-md:text-[1.125rem]"
+              className="text-[28px] text-[rgba(18,3,92,1)] font-semibold hover:underline transition-colors"
             >
               info@roysremontti.com
             </a>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -28,7 +27,7 @@ export const HeroSection: React.FC = () => {
           </div>
           
           {/* Desktop Navigation links in center */}
-          <div className="flex items-center gap-12 text-black text-base font-normal">
+          <div className="flex items-center gap-12 text-black text-lg font-normal">
             <a href="#about" className="hover:text-gray-600 transition-colors border-b-2 border-black pb-1">
               {t.nav.about}
             </a>
@@ -79,7 +78,7 @@ export const HeroSection: React.FC = () => {
               <X className="h-6 w-6 text-black" />
             </button>
           </div>
-          <div className="flex flex-col items-center gap-8 pt-12 text-black text-lg font-normal">
+          <div className="flex flex-col items-center gap-8 pt-12 text-black text-xl font-normal">
             <a href="#about" onClick={toggleMobileMenu} className="hover:text-gray-600 transition-colors">
               {t.nav.about}
             </a>
@@ -122,10 +121,10 @@ export const HeroSection: React.FC = () => {
           <div className="z-10 flex mr-[-153px] flex-col items-stretch font-normal max-md:max-w-full">
             <div className="border-neutral-200 border z-10 flex shrink-0 h-[460px] rounded-[0px_0px_45px_0px] border-solid max-md:max-w-full" />
             <div className="w-[552px] max-w-full max-md:mr-[7px]">
-              <h1 className="text-black text-4xl md:text-[2.25rem] leading-tight tracking-wide max-md:max-w-full">
+              <h1 className="text-black text-[97px] leading-[89px] tracking-[2.91px] max-md:max-w-full max-md:text-[40px] max-md:leading-[41px]">
                 {t.hero.title}
               </h1>
-              <p className="text-black text-lg md:text-xl leading-relaxed mt-4 max-md:max-w-full">
+              <p className="text-black text-[38px] leading-[51px] mt-4 max-md:max-w-full">
                 {t.hero.subtitle}
               </p>
             </div>
@@ -181,10 +180,10 @@ export const HeroSection: React.FC = () => {
             
             {/* Text content over the image */}
             <div className="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
-              <h1 className="text-[1.875rem] leading-tight tracking-wide font-normal mb-4">
+              <h1 className="text-[48px] leading-[44px] tracking-[1.5px] font-normal mb-4">
                 {t.hero.title}
               </h1>
-              <p className="text-[1.125rem] leading-relaxed font-normal">
+              <p className="text-[24px] leading-[32px] font-normal">
                 {t.hero.subtitle}
               </p>
             </div>
